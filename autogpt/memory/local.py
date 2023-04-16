@@ -38,11 +38,11 @@ class LocalCache(MemoryProviderSingleton):
                     loaded = orjson.loads(file_content)
                     self.data = CacheContent(**loaded)
             except orjson.JSONDecodeError:
-                print(f"Error: The file '{self.filename}' is not in JSON format.")
+                print(f"Error: 文件 '{self.filename}' 不是json格式.")
                 self.data = CacheContent()
         else:
             print(
-                f"Warning: The file '{self.filename}' does not exist. Local memory would not be saved to a file."
+                f"Warning: 文件 '{self.filename}' 不存在. 本地内存不会保存到文件中。."
             )
             self.data = CacheContent()
 

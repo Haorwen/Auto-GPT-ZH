@@ -4,7 +4,7 @@
 
 ![gzh](gzh.png)
 
-### 公众号内回复"Auto-GPT"加入群聊，共同探讨更多玩法
+### 公众号<阿杰的人生路>回复"Auto-GPT"加入群聊，共同探讨更多玩法
 
 ### 中文版Demo :
 
@@ -57,9 +57,7 @@ AgentGPT在接到这项任务之后，便开始了他的展示：
 
 ## 📋 要求
 
-- 环境(选择一个就行)
-  - [vscode + devcontainer](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers): 已经配置在.devcontainer文件夹下，可以直接使用
-  - [Python 3.8 或者更高](https://www.tutorialspoint.com/how-to-install-python-in-windows)
+- [Python 3.8 或者更高](https://www.tutorialspoint.com/how-to-install-python-in-windows)
 - [OpenAI API key](https://platform.openai.com/account/api-keys)
 
 可选的:
@@ -85,7 +83,7 @@ git clone git@github.com:kaqijiang/Auto-GPT-ZH.git
 3. 终端中 cd到项目目录
 
 ```
-cd 'Auto-GPT-ZH'
+cd Auto-GPT-ZH
 ```
 
 4. 终端中安装所需的依赖项

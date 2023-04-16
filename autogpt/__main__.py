@@ -194,8 +194,7 @@ def prompt_user():
     logger.typewriter_log(
         "欢迎来到 Auto-GPT-ZH! 中文版由AJ提供. 公众号《阿杰的人生路》回复Auto-GPT,加入社区共同探讨使用方式.",
         Fore.GREEN,
-        "在下面输入您的 AI 的名称及其角色。什么都不输入将加载"
-        " defaults.",
+        "在下面输入您的 AI 的名称及其角色。不输入将使用默认名称",
         speak_text=True,
     )
 
@@ -223,7 +222,7 @@ def prompt_user():
 
     # Enter up to 5 goals for the AI
     logger.typewriter_log(
-        "AJ提示你:输入最多5个要帮你实现的功能/目标 ",
+        "提示:输入最多5个要帮你实现的功能/目标 ",
         Fore.GREEN,
          "例如：\n增加公众号关注者、市场调研、自主开发网站等等")
     print("输入空白以加载默认值，完成时不要输入任何内容。", flush=True)

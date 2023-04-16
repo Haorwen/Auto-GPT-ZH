@@ -15,7 +15,7 @@ def get_prompt():
     prompt_generator.add_constraint("~4000 word limit for short term memory. Your short term memory is short, so immediately save important information to files.")
     prompt_generator.add_constraint("If you are unsure how you previously did something or want to recall past events, thinking about similar events will help you remember.")
     prompt_generator.add_constraint("No user assistance")
-    prompt_generator.add_constraint("Reply in Chinese")#增加使用中文回复
+    prompt_generator.add_constraint("Reply in Chinese")
     prompt_generator.add_constraint('Exclusively use the commands listed in double quotes e.g. "command name"')
     
 
