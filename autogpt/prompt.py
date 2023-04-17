@@ -161,18 +161,17 @@ def construct_prompt() -> str:
         logger.typewriter_log("Goals:", Fore.GREEN, f"{config.ai_goals}")
     elif config.ai_name:
         logger.typewriter_log(
-            "Welcome back! ",
+            "欢迎回来! ",
             Fore.GREEN,
-            f"Would you like me to return to being {config.ai_name}?",
+            f"你想让继续执行原来的任务吗 {config.ai_name}?",
             speak_text=True,
         )
         should_continue = clean_input(
-            f"""Continue with the last settings?
-Name:  {config.ai_name}
-Role:  {config.ai_role}
-Goals: {config.ai_goals}
-Continue (y/n): """
-        )
+            f"""继续上次的这些设置?
+名称:  {config.ai_name}
+职责:  {config.ai_role}
+目标: {config.ai_goals}
+继续 (输入y，继续上一次设置/输入n，重新来过): """)
         if should_continue.lower() == "n":
             config = AIConfig()
 

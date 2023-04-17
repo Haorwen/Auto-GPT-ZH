@@ -308,4 +308,4 @@ def delete_agent(key: str) -> str:
         str: A message indicating whether the agent was deleted or not
     """
     result = AGENT_MANAGER.delete_agent(key)
-    return f"Agent {key} deleted." if result else f"Agent {key} does not exist."
+    return f"代理 {key} 已经被删除." if result else f"代理 {key} 不存在."

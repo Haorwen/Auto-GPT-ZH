@@ -101,25 +101,25 @@ def ingest_file(
     :param overlap: The number of overlapping characters between chunks, default is 200
     """
     try:
-        print(f"Working with file {filename}")
+        print(f"正在处理文件 {filename}")
         content = read_file(filename)
         content_length = len(content)
-        print(f"File length: {content_length} characters")
+        print(f"文件长度: {content_length} 字节")
 
         chunks = list(split_file(content, max_length=max_length, overlap=overlap))
 
         num_chunks = len(chunks)
         for i, chunk in enumerate(chunks):
-            print(f"Ingesting chunk {i + 1} / {num_chunks} into memory")
+            print(f"将第 {i + 1} / {num_chunks} 块读入内存中")
             memory_to_add = (
-                f"Filename: {filename}\n" f"Content part#{i + 1}/{num_chunks}: {chunk}"
+                f"文件: {filename}\n" f"进度#{i + 1}/{num_chunks}: {chunk}"
             )
 
             memory.add(memory_to_add)
 
-        print(f"Done ingesting {num_chunks} chunks from {filename}.")
+        print(f"完成从 {filename} 摄取 {num_chunks}个chunk.")
     except Exception as e:
-        print(f"Error while ingesting file '{filename}': {str(e)}")
+        print(f"Error: 摄取文件时 '{filename}': {str(e)}")
 
 
 def write_to_file(filename: str, text: str) -> str:
@@ -133,7 +133,7 @@ def write_to_file(filename: str, text: str) -> str:
         str: A message indicating success or failure
     """
     if check_duplicate_operation("write", filename):
-        return "Error: File has already been updated."
+        return "Error: 文件已更新."
     try:
         filepath = path_in_workspace(filename)
         directory = os.path.dirname(filepath)
@@ -142,7 +142,7 @@ def write_to_file(filename: str, text: str) -> str:
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(text)
         log_operation("write", filename)
-        return "File written to successfully."
+        return "文件写入成功."
     except Exception as e:
         return f"Error: {str(e)}"
 
@@ -165,7 +165,7 @@ def append_to_file(filename: str, text: str, shouldLog: bool = True) -> str:
         if shouldLog:
             log_operation("append", filename)
 
-        return "Text appended successfully."
+        return "文本添加成功."
     except Exception as e:
         return f"Error: {str(e)}"
 
@@ -185,7 +185,7 @@ def delete_file(filename: str) -> str:
         filepath = path_in_workspace(filename)
         os.remove(filepath)
         log_operation("delete", filename)
-        return "File deleted successfully."
+        return "文件删除成功."
     except Exception as e:
         return f"Error: {str(e)}"
 

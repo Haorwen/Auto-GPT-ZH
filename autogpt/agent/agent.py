@@ -56,7 +56,7 @@ class Agent:
                 and loop_count > cfg.continuous_limit
             ):
                 logger.typewriter_log(
-                    "Continuous Limit Reached: ", Fore.YELLOW, f"{cfg.continuous_limit}"
+                    "连续达到限制: ", Fore.YELLOW, f"{cfg.continuous_limit}"
                 )
                 break
 
@@ -79,7 +79,7 @@ class Agent:
                     attempt_to_fix_json_by_finding_outermost_brackets(assistant_reply)
                 )
                 if cfg.speak_mode:
-                    say_text(f"I want to execute {command_name}")
+                    say_text(f"我要执行 {command_name}")
             except Exception as e:
                 logger.error("Error: \n", str(e))
 
@@ -89,17 +89,14 @@ class Agent:
                 # to exit
                 self.user_input = ""
                 logger.typewriter_log(
-                    "NEXT ACTION: ",
+                    "下一步操作: ",
                     Fore.CYAN,
-                    f"COMMAND = {Fore.CYAN}{command_name}{Style.RESET_ALL}  "
-                    f"ARGUMENTS = {Fore.CYAN}{arguments}{Style.RESET_ALL}",
+                    f"COMMAND = {Fore.CYAN}{command_name}{Style.RESET_ALL}"
+                    f"  ARGUMENTS = {Fore.CYAN}{arguments}{Style.RESET_ALL}",
                 )
                 print(
-                    "Enter 'y' to authorise command, 'y -N' to run N continuous "
-                    "commands, 'n' to exit program, or enter feedback for "
-                    f"{self.ai_name}...",
-                    flush=True,
-                )
+                    f"输入'y'授权命令，'y -N'运行N个连续命令，'n'退出程序，或为{self.ai_name}输入反馈...",
+                    flush=True)
                 while True:
                     console_input = clean_input(
                         Fore.MAGENTA + "Input:" + Style.RESET_ALL
@@ -114,10 +111,7 @@ class Agent:
                             )
                             self.user_input = "GENERATE NEXT COMMAND JSON"
                         except ValueError:
-                            print(
-                                "Invalid input format. Please enter 'y -n' where n is"
-                                " the number of continuous tasks."
-                            )
+                            print("输入格式无效。 请输入'y -n',其中 n 是连续任务的数量。 例如: y -1")
                             continue
                         break
                     elif console_input.lower() == "n":
@@ -130,17 +124,17 @@ class Agent:
 
                 if self.user_input == "GENERATE NEXT COMMAND JSON":
                     logger.typewriter_log(
-                        "-=-=-=-=-=-=-= COMMAND AUTHORISED BY USER -=-=-=-=-=-=-=",
+                        "-=-=-=-=-=-=-= 用户授权的命令 -=-=-=-=-=-=-=",
                         Fore.MAGENTA,
                         "",
                     )
                 elif self.user_input == "EXIT":
-                    print("Exiting...", flush=True)
+                    print("退出中...", flush=True)
                     break
             else:
                 # Print command
                 logger.typewriter_log(
-                    "NEXT ACTION: ",
+                    "下一步操作: ",
                     Fore.CYAN,
                     f"COMMAND = {Fore.CYAN}{command_name}{Style.RESET_ALL}"
                     f"  ARGUMENTS = {Fore.CYAN}{arguments}{Style.RESET_ALL}",
@@ -149,10 +143,10 @@ class Agent:
             # Execute command
             if command_name is not None and command_name.lower().startswith("error"):
                 result = (
-                    f"Command {command_name} threw the following error: {arguments}"
+                    f"Command {command_name} 抛出以下错误: {arguments}"
                 )
             elif command_name == "human_feedback":
-                result = f"Human feedback: {self.user_input}"
+                result = f"人工反馈: {self.user_input}"
             else:
                 result = (
                     f"Command {command_name} returned: "
@@ -162,9 +156,9 @@ class Agent:
                     self.next_action_count -= 1
 
             memory_to_add = (
-                f"Assistant Reply: {assistant_reply} "
-                f"\nResult: {result} "
-                f"\nHuman Feedback: {self.user_input} "
+                f"机器人回复: {assistant_reply} "
+                f"\n结果: {result} "
+                f"\n人工反馈: {self.user_input} "
             )
 
             self.memory.add(memory_to_add)
@@ -176,8 +170,8 @@ class Agent:
                 logger.typewriter_log("SYSTEM: ", Fore.YELLOW, result)
             else:
                 self.full_message_history.append(
-                    create_chat_message("system", "Unable to execute command")
+                    create_chat_message("system", "无法执行命令")
                 )
                 logger.typewriter_log(
-                    "SYSTEM: ", Fore.YELLOW, "Unable to execute command"
+                    "SYSTEM: ", Fore.YELLOW, "无法执行命令"
                 )

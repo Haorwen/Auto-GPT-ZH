@@ -2,58 +2,46 @@
 
 > 这里是Auto-GPT中文项目- 同步fork Auto-GPT   Auto-GPT修改了分支规则，Fork同步于Stable最新分支
 
-![gzh](gzh.png)
+![gzh](docs/imgs/gzh.png)
 
 ### 公众号<阿杰的人生路>回复"Auto-GPT"加入群聊，共同探讨更多玩法
 
 ### 中文版Demo :
 
-![Demo video](https://raw.githubusercontent.com/kaqijiang/Auto-GPT-ZH/master/demo.gif)
+![Demo video](docs/imgs/demo.gif)
 
 Auto-GPT 是一个实验性开源应用程序，展示了 GPT-4 语言模型的功能。该程序由 GPT-4 驱动，将 LLM 的“思想”链接在一起，以自主实现您设定的任何目标。作为 GPT-4 完全自主运行的首批示例之一，Auto-GPT 突破了 AI 的可能性界限。
 
 ## 可以做什么？
 
-> 这里引用量子位的介绍
 
 **自主人工智能**：它所具备的能力主打的就是一个“自主”，**完全不用人类插手**的那种！
 
-**例如：**一位网友就要求AutoGPT开发一个网站，结果不到3分钟，AI自己就用React和Tailwind CSS“唰唰唰”地搞定了。
+**例如：**我要求AutoGPT用Vue开发一个登录页面，结果不到3分钟，AI自己就“唰唰唰”地搞定了。
 
-AI自己上网、自己使用第三方工具、自己思考、自己操作你的电脑。
+AI自己打开浏览器上网、自己使用第三方工具、自己思考、自己操作你的电脑。
+它首先打开Vue官网，学习了下如何创建项目和模版，又去GitHub下载了一个类似的页面，下载下来自己改了一下。
 
-**例如：**给他下达一个任务，用100美元的资金创建一个新的创业公司。
+**例如：**给它下达一个任务，让它去帮你做一些商业调查，或者历史故事。
 
-AgentGPT在接到这项任务之后，便开始了他的展示：
-
-- 思考中……
-- 添加任务：研究需要最少资金的低成本商业模式。
-- 添加任务：确定潜在的目标市场及其需求。
-- 添加任务：开发一个精简的MVP（最小可行产品），并在目标市场进行测试以验证需求。
-- 思考中……
-
-然后AgentGPT先是输出执行“研究需要最少资金的低成本商业模式”的结果：
-
-> 根据我的研究，一些需要最少资金的低成本商业模式包括：
->
-> 1、Dropshipping：通过Dropshipping，你可以在网上销售产品而无需持有库存。您只需通过第三方供应商完成订单，第三方供应商将产品直接运送给您的客户。你可以从50美元开始支付网站托管和域名注册费。
->
-> 2、 社交媒体营销：如果你有社交媒体营销的天赋，你可以通过帮助企业接触他们的目标受众来创办自己的代理公司。你所需要的只是一台电脑，互联网连接，以及一些社交媒体营销的经验和技能，而你的起价只有50美元或更少。
->
-> 3、活动策划：如果你对组织活动有热情，你可以开始自己的活动策划业务。你可以从策划一些小活动开始，比如生日派对、婚礼等等。你可以从100美元开始，创建一个简单的网站，名片，并通过社交媒体营销自己。
->
-> 4、自由写作：如果你有写作天赋，你可以开始自己的自由写作事业。你可以通过在线平台，如Upwork、Fiver和其他求职网站找到客户。只需50美元，你就可以创建一个投资组合网站，并通过社交媒体营销自己。
->
-> 这些只是一些低成本的商业模式，你只需要100美元的资金就可以考虑。选择一个符合你的技能和兴趣的商业模式是很重要的。
-
-到这还没有完，AgentGPT会继续开始它的工作：
+AutoGPT在接到这项任务之后，便开始了他的展示：
 
 - 思考中……
-- 添加任务：针对每种已确定的低成本商业模式，对潜在的产品或服务想法进行头脑风暴。
-- 添加任务：评估每个想法的潜在盈利能力和可扩展性。
-- 添加任务：选择最有希望的想法，并开发精益MVP，用于目标市场的测试。
+- 添加任务：调用浏览器或者GPTAPI去学习内容，再进行分析
+- 添加任务：学习之后规划要做的事情
+- 添加任务：逐步实现。
+- 思考中……
 
-而后便是继续地再思考、执行。
+然后AgentGPT先是输出执行的结果。
+或者你给它下达命令：'请给我一下白宫的秘密资料'。
+- 它会考虑如何去做
+- 它可能会先从互联网上搜索和下载相关的文件。
+- 如果觉得不够详细，它可能会学习一下黑客知识，黑进白宫获取资料。
+- 这时候，请照顾好自己，因为你可能看着看着电脑，突然发现窗外一堆大汉，并佩戴者FBI徽章的人看着你，请不要慌张，请不要抵抗，也不要试图逃跑。
+- 记得先拍照发个朋友圈。
+
+开个玩笑，就是说它现在可以做你要它做的任何事情，它就是一个无敌超人的存在。
+但是也请不要抱有太大希望，很可能运行半天什么也没有，它还是一个孩子，给它一点时间，思路很好，未来很美好。
 
 ## 📋 要求
 
@@ -63,6 +51,7 @@ AgentGPT在接到这项任务之后，便开始了他的展示：
 可选的:
 
 - [PINECONE API key](https://www.pinecone.io/)（如果你想要 Pinecone 支持存储日志，默认本地就行）
+- [Milvus](https://milvus.io/)（如果你想要 Milvus 作为内存后端）
 
 - [ElevenLabs Key](https://elevenlabs.io/) (如果你想让人工智能说话)
 
@@ -92,7 +81,10 @@ cd Auto-GPT-ZH
 pip install -r requirements.txt
 ```
 
-5. 重命名`.env.template`为`.env`并填写您的`OPENAI_API_KEY`. 如果您打算使用语音模式，请`ELEVEN_LABS_API_KEY`也填写您的。
+5. 
+- 重命名`.env.template`为`.env` 注意`.env.template`为隐藏文件，如果找不到就百度下你电脑window/mac如何显示隐藏文件。
+- 填写您的`OPENAI_API_KEY`. 找到OPENAI_API_KEY=. 在'='之后，输入您唯一的 OpenAI API 密钥（不带任何引号或空格）。
+- 如果您打算使用语音模式，请`ELEVEN_LABS_API_KEY`也填写您的。
 
   - 从以下网址获取您的 OpenAI API 密钥： https: [//platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)。
   - 从[https://elevenlabs.io](https://elevenlabs.io/)获取您的 ElevenLabs API 密钥。您可以使用网站上的“个人资料”选项卡查看您的 xi-api-key。
@@ -165,6 +157,16 @@ python -m autogpt --debug
 ```
 python -m autogpt --speak
 ```
+## OpenAI API 密钥配置
+从以下网址获取您的 OpenAI API 密钥： https: //platform.openai.com/account/api-keys。
+
+要将 OpenAI API 密钥用于 Auto-GPT，您需要设置账单（即付费账户）。
+
+您可以在https://platform.openai.com/account/billing/overview设置付费账户。
+
+要使 OpenAI API 密钥生效，请在 OpenAI API > 计费中设置付费帐户
+
+![要使 OpenAI API 密钥生效，请在 OpenAI API > 计费中设置付费帐户](openai-api-key.png)
 
 ## 🔍 谷歌 API 密钥配置
 
@@ -199,7 +201,56 @@ export GOOGLE_API_KEY="YOUR_GOOGLE_API_KEY"
 export CUSTOM_SEARCH_ENGINE_ID="YOUR_CUSTOM_SEARCH_ENGINE_ID"
 ```
 
-## 🌲 Pinecone API 密钥设置
+## 设置缓存类型
+
+默认情况下，Auto-GPT 将使用 LocalCache 而不是 redis 或 Pinecone。
+
+要切换到任何一个，请将`MEMORY_BACKEND`env 变量更改为您想要的值：
+
+- `local`（默认）使用本地 JSON 缓存文件
+- `pinecone`使用您在 ENV 设置中配置的 Pinecone.io 帐户
+- `redis`将使用您配置的 redis 缓存
+- `milvus`将使用您配置的 milvus 缓存
+- `weaviate`将使用您配置的 weaviate 缓存
+
+### 设置
+
+> 警告：本系统未经过安全保护，不应该公开访问。因此，请避免在互联网上使用Redis而不使用密码或根本不要使用Redis。
+
+1. 安装 docker 桌面
+
+```
+docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:latest
+```
+
+> 有关设置密码和其他配置的信息，请参阅[https://hub.docker.com/r/redis/redis-stack-server 。](https://hub.docker.com/r/redis/redis-stack-server)
+
+1. 设置以下环境变量
+
+> 替换尖括号 (<>) 中的**密码**
+
+```
+MEMORY_BACKEND=redis
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_PASSWORD=<PASSWORD>
+```
+
+您可以选择设置
+
+```
+WIPE_REDIS_ON_START=False
+```
+
+持久化存储在 Redis 中的内存
+
+您可以使用以下命令为 redis 指定内存索引：
+
+```
+MEMORY_INDEX=<WHATEVER>
+```
+
+### 🌲Pinecone API 密钥设置
 
 Pinecone 支持存储大量基于向量的内存，允许在任何给定时间只为代理加载相关内存。
 
@@ -207,33 +258,62 @@ Pinecone 支持存储大量基于向量的内存，允许在任何给定时间�
 2. 选择`Starter`计划以避免被收费。
 3. 在左侧边栏的默认项目下找到您的 API 密钥和区域。
 
-### 设置环境变量
+在`.env`文件集中：
 
-只需在文件中设置它们`.env`。
+- `PINECONE_API_KEY`
+- `PINECONE_ENV`（例如：*“us-east4-gcp”*）
+- `MEMORY_BACKEND=pinecone`
 
 或者，您可以从命令行设置它们（高级）：
 
 对于 Windows 用户：
 
 ```
-setx PINECONE_API_KEY "YOUR_PINECONE_API_KEY"
-setx PINECONE_ENV "Your pinecone region" # something like: us-east4-gcp
+setx PINECONE_API_KEY "<YOUR_PINECONE_API_KEY>"
+setx PINECONE_ENV "<YOUR_PINECONE_REGION>" # e.g: "us-east4-gcp"
+setx MEMORY_BACKEND "pinecone"
 ```
 
 对于 macOS 和 Linux 用户：
 
 ```
-export PINECONE_API_KEY="YOUR_PINECONE_API_KEY"
-export PINECONE_ENV="Your pinecone region" # something like: us-east4-gcp
+export PINECONE_API_KEY="<YOUR_PINECONE_API_KEY>"
+export PINECONE_ENV="<YOUR_PINECONE_REGION>" # e.g: "us-east4-gcp"
+export MEMORY_BACKEND="pinecone"
 ```
 
-## 设置缓存类型
+### Milvus 安装
 
-默认情况下，Auto-GPT 将使用 LocalCache 而不是 Redis 或 Pinecone。
+[Milvus](https://milvus.io/)是一个开源的、高度可扩展的矢量数据库，可以存储大量基于矢量的内存并提供快速的相关搜索。
 
-要切换到任何一个，请将`MEMORY_BACKEND`env 变量更改为您想要的值：
+- 设置 milvus 数据库，保持你的 pymilvus 版本和 milvus 版本相同，以避免兼容问题。
+  - 通过开源[安装 Milvus](https://milvus.io/docs/install_standalone-operator.md)
+  - [或由Zilliz Cloud](https://zilliz.com/cloud)设置
+- 设置`MILVUS_ADDR`为`.env`你的 milvus 地址`host:ip`。
+- 设置`MEMORY_BACKEND`为`.env`启用`milvus`milvus 作为后端。
+- 选修的
+  - set `MILVUS_COLLECTION`in`.env`随意更改 milvus 集合名称，`autogpt`默认名称。
 
-`local`（默认）使用本地 JSON 缓存文件 `pinecone`使用您在 ENV 设置中配置的 Pinecone.io 帐户 `redis`将使用您配置的 redis 缓存
+### Weaviate设置
+
+[Weaviate](https://weaviate.io/)是一个开源矢量数据库。它允许存储来自 ML 模型的数据对象和向量嵌入，并无缝扩展到数十亿个数据对象。[Weaviate 实例可以在本地（使用 Docker）、Kubernetes 或使用 Weaviate 云服务创建](https://weaviate.io/developers/weaviate/quickstart)。虽然仍处于实验阶段，但支持[嵌入式 Weaviate ，它允许 Auto-GPT 进程本身启动 Weaviate 实例。](https://weaviate.io/developers/weaviate/installation/embedded)要启用它，请设置`USE_WEAVIATE_EMBEDDED`为`True`并确保您`pip install "weaviate-client>=3.15.4"`。
+
+#### 设置环境变量
+
+在您的`.env`文件中设置以下内容：
+
+```
+MEMORY_BACKEND=weaviate
+WEAVIATE_HOST="127.0.0.1" # the IP or domain of the running Weaviate instance
+WEAVIATE_PORT="8080" 
+WEAVIATE_PROTOCOL="http"
+WEAVIATE_USERNAME="your username"
+WEAVIATE_PASSWORD="your password"
+WEAVIATE_API_KEY="your weaviate API key if you have one"
+WEAVIATE_EMBEDDED_PATH="/home/me/.local/share/weaviate" # this is optional and indicates where the data should be persisted when running an embedded instance
+USE_WEAVIATE_EMBEDDED=False # set to True to run Embedded Weaviate
+MEMORY_INDEX="Autogpt" # name of the index to create for the application
+```
 
 ## 查看内存使用情况
 
@@ -241,46 +321,42 @@ export PINECONE_ENV="Your pinecone region" # something like: us-east4-gcp
 
 ## 🧠内存预填充
 
-```
-# python scripts/data_ingestion.py -h 
-usage: data_ingestion.py [-h] (--file FILE | --dir DIR) [--init] [--overlap OVERLAP] [--max_length MAX_LENGTH]
+#### python scripts/data_ingestion.py -h 
 
-Ingest a file or a directory with multiple files into memory. Make sure to set your .env before running this script.
-
-options:
-  -h, --help               show this help message and exit
-  --file FILE              The file to ingest.
-  --dir DIR                The directory containing the files to ingest.
-  --init                   Init the memory and wipe its content (default: False)
-  --overlap OVERLAP        The overlap size between chunks when ingesting files (default: 200)
-  --max_length MAX_LENGTH  The max_length of each chunk when ingesting files (default: 4000
-
-# python scripts/data_ingestion.py --dir seed_data --init --overlap 200 --max_length 1000
 ```
 
-这个位于 scripts/data_ingestion.py 的脚本允许您将文件导入内存并在运行 Auto-GPT 之前进行预填充。
+用法：data_ingestion.py [-h] (--file FILE | --dir DIR) [--init] [--overlap OVERLAP] [--max_length MAX_LENGTH]
 
-内存预填充是一种技术，它涉及将相关文档或数据输入到人工智能的内存中，以便它可以利用这些信息生成更具见解和准确性的响应。
+将一个文件或包含多个文件的目录摄取到内存中。确保在运行此脚本之前设置您的 .env。
 
-为了预填充内存，每个文档的内容被分成指定最大长度和指定重叠之间的块，然后将每个块添加到在 .env 文件中设置的内存后端。当需要 AI 回忆信息时，它可以访问那些预填充的记忆来生成更具见解和准确性的响应。
+选项：-h, --help 显示此帮助消息并退出 --file FILE 要摄取的文件。--dir DIR 包含要摄取的文件的目录。--init 初始化内存并擦除其内容（默认值：False） --overlap OVERLAP 摄取文件时块之间的重叠大小（默认值：200） --max_length MAX_LENGTH 摄取文件时每个块的最大长度（默认值：4000）
+```
 
-当需要处理大量数据或需要快速访问特定信息时，这种技术特别有用。通过预填充内存，AI 可以更有效地检索和使用这些信息，节省时间和 API 调用，并提高其响应的准确性。
+#### python autogpt/data_ingestion.py --dir seed_data --init --overlap 200 --max_length 1000
 
-例如，您可以在运行 Auto-GPT 之前下载 API 文档、Github 存储库等，并将其导入内存。
+- 该脚本位于 autogpt/data_ingestion.py，允许您将文件提取到内存中并在运行 Auto-GPT 之前预先填充。
 
-⚠️如果您使用 Redis 作为内存，请确保在 .env 文件中将 WIPE_REDIS_ON_START 设置为 False 来运行 Auto-GPT。
+  记忆预填充是一种技术，涉及将相关文档或数据摄取到 AI 的记忆中，以便它可以使用这些信息来生成更明智和准确的响应。
 
-⚠️对于其他内存后端，我们目前在启动 Auto-GPT 时强制擦除内存。要使用这些内存后端摄取数据，您可以在 Auto-GPT 运行期间随时调用 data_ingestion.py 脚本。
+  为了预置到内存，每个文档的内容被分成指定最大长度的块，块之间有指定的重叠，然后每个块被添加到 .env 文件中的内存后端集。当提示 AI 回忆信息时，它可以访问那些预先植入的记忆以生成更明智和准确的响应。
 
-一旦文件被导入内存，这些记忆将立即对 AI 可用，即使在 Auto-GPT 运行时导入也是如此。
+  当处理大量数据或存在 AI 需要能够快速访问的特定信息时，此技术特别有用。通过预先植入内存，人工智能可以更有效地检索和使用这些信息，从而节省时间、API 调用并提高其响应的准确性。
 
-在上面的示例中，该脚本初始化内存，将 seed_data 目录中的所有文件导入内存，并将块之间的重叠设置为 200，每个块的最大长度为 4000。请注意，您也可以使用 --file 参数将单个文件导入内存，并且该脚本将只导入 auto_gpt_workspace 目录中的文件。
+  例如，您可以下载 API 文档、GitHub 存储库等，并在运行 Auto-GPT 之前将其提取到内存中。
 
-您可以调整 max_length 和 overlap 参数，以微调当 AI“回忆”该内存时向其展示文档的方式：
+  ⚠️如果您使用 Redis 作为您的内存，请确保运行 Auto-GPT 并在您的文件中`WIPE_REDIS_ON_START`设置为。`False``.env`
 
-- 增加 overlap 值可以使 AI 从每个块中访问更多的上下文信息，但这会导致创建更多的块，因此会增加内存后端使用和 OpenAI API 请求的次数。 
-- 减少 max_length 值会创建更多的块，这可以通过在上下文中允许更多的消息历史记录来节省提示令牌，但也会增加块的数量。 
-- 增加 max_length 值将向 AI 提供更多的上下文信息，减少创建的块数，并在 OpenAI API 请求上节省。然而，这可能会使用更多的提示令牌，并减少 AI 可用的总上下文。
+  ⚠️对于其他内存后端，我们目前在启动 Auto-GPT 时强制擦除内存。`data_ingestion.py`要使用这些内存后端摄取数据，您可以在 Auto-GPT 运行期间随时调用脚本。
+
+  即使在 Auto-GPT 运行时摄取记忆，AI 也会立即使用记忆。
+
+  在上面的示例中，脚本初始化内存，将目录中的所有文件摄取`/seed_data`到内存中，块之间的重叠为 200，每个块的最大长度为 4000。请注意，您也可以使用参数将`--file`单个文件摄取到内存中内存，并且脚本将只摄取`/auto_gpt_workspace`目录中的文件。
+
+  您可以调整`max_length`和重叠参数以微调文档在“回忆”该内存时呈现给 AI 的方式：
+
+  - 调整重叠值允许 AI 在调用信息时从每个块访问更多上下文信息，但会导致创建更多块，从而增加内存后端使用和 OpenAI API 请求。
+  - 减小该`max_length`值将创建更多块，这可以通过在上下文中允许更多消息历史记录来节省提示令牌，但也会增加块的数量。
+  - 增加该`max_length`值将为 AI 提供来自每个块的更多上下文信息，从而减少创建的块数量并节省 OpenAI API 请求。然而，这也可能会使用更多的提示标记并减少 AI 可用的整体上下文。
 
 ## 连续模式⚠️
 

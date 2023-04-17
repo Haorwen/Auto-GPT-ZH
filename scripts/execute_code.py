@@ -12,12 +12,12 @@ def execute_python_file(file):
     print (f"正在工作空间 '{WORKSPACE_FOLDER}' 中执行文件 '{file}'")
 
     if not file.endswith(".py"):
-        return "Error: Invalid file type. Only .py files are allowed."
+        return "Error: 无效的文件类型。仅允许 .py 文件."
 
     file_path = os.path.join(WORKSPACE_FOLDER, file)
 
     if not os.path.isfile(file_path):
-        return f"Error: File '{file}' does not exist."
+        return f"Error: 文件 '{file}' 不存在."
 
     try:
         client = docker.from_env()

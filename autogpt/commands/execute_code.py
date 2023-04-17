@@ -18,15 +18,15 @@ def execute_python_file(file: str):
         str: The output of the file
     """
 
-    print(f"Executing file '{file}' in workspace '{WORKSPACE_PATH}'")
+    print (f"正在工作空间 '{WORKSPACE_FOLDER}' 中执行文件 '{file}'")
 
     if not file.endswith(".py"):
-        return "Error: Invalid file type. Only .py files are allowed."
+        return "Error: 文件类型无效. 只允许 .py 文件."
 
     file_path = path_in_workspace(file)
 
     if not os.path.isfile(file_path):
-        return f"Error: File '{file}' does not exist."
+        return f"Error: 文件 '{file}' 不存在."
 
     if we_are_running_in_a_docker_container():
         result = subprocess.run(
@@ -45,7 +45,7 @@ def execute_python_file(file: str):
             client.images.get(image_name)
             print(f"Image '{image_name}' found locally")
         except ImageNotFound:
-            print(f"Image '{image_name}' not found locally, pulling from Docker Hub")
+            print(f"在本地找不到图像'{image_name}'，从 Docker Hub 拉取")
             # Use the low-level API to stream the pull response
             low_level_client = docker.APIClient()
             for line in low_level_client.pull(image_name, stream=True, decode=True):
@@ -102,7 +102,7 @@ def execute_shell(command_line: str) -> str:
     if str(WORKSPACE_PATH) not in current_dir:
         os.chdir(WORKSPACE_PATH)
 
-    print(f"Executing command '{command_line}' in working directory '{os.getcwd()}'")
+    print(f"正在工作目录'{os.getcwd()}'中执行命令'{command_line}'")
 
     result = subprocess.run(command_line, capture_output=True, shell=True)
     output = f"STDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
