@@ -1,30 +1,15 @@
-import abc
+"""Configuration class to store the state of bools for different scripts access."""
 import os
+from colorama import Fore
+
+from autogpt.config.singleton import Singleton
 
 import openai
 import yaml
+
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
-
-
-class Singleton(abc.ABCMeta, type):
-    """
-    单例元类，用于确保一个类只有一个实例。
-    """
-
-    _instances = {}
-
-    def __call__(cls, *args, **kwargs):
-        """单例元类的调用方法."""
-        if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
-        return cls._instances[cls]
-
-
-class AbstractSingleton(abc.ABC, metaclass=Singleton):
-    pass
+load_dotenv(verbose=True)
 
 
 class Config(metaclass=Singleton):
@@ -32,7 +17,7 @@ class Config(metaclass=Singleton):
     用于存储不同脚本访问的 bool 状态的配置类。
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize the Config class"""
         self.debug_mode = False
         self.continuous_mode = False
@@ -40,6 +25,7 @@ class Config(metaclass=Singleton):
         self.speak_mode = False
         self.skip_reprompt = False
 
+        self.selenium_web_browser = os.getenv("USE_WEB_BROWSER", "chrome")
         self.ai_settings_file = os.getenv("AI_SETTINGS_FILE", "ai_settings.yaml")
         self.fast_llm_model = os.getenv("FAST_LLM_MODEL", "gpt-3.5-turbo")
         self.smart_llm_model = os.getenv("SMART_LLM_MODEL", "gpt-4")
@@ -71,20 +57,42 @@ class Config(metaclass=Singleton):
         self.use_brian_tts = False
         self.use_brian_tts = os.getenv("USE_BRIAN_TTS")
 
+        self.github_api_key = os.getenv("GITHUB_API_KEY")
+        self.github_username = os.getenv("GITHUB_USERNAME")
+
         self.google_api_key = os.getenv("GOOGLE_API_KEY")
         self.custom_search_engine_id = os.getenv("CUSTOM_SEARCH_ENGINE_ID")
 
         self.pinecone_api_key = os.getenv("PINECONE_API_KEY")
         self.pinecone_region = os.getenv("PINECONE_ENV")
 
+        self.weaviate_host  = os.getenv("WEAVIATE_HOST")
+        self.weaviate_port = os.getenv("WEAVIATE_PORT")
+        self.weaviate_protocol = os.getenv("WEAVIATE_PROTOCOL", "http")
+        self.weaviate_username = os.getenv("WEAVIATE_USERNAME", None)
+        self.weaviate_password = os.getenv("WEAVIATE_PASSWORD", None)
+        self.weaviate_scopes = os.getenv("WEAVIATE_SCOPES", None)
+        self.weaviate_embedded_path = os.getenv("WEAVIATE_EMBEDDED_PATH")
+        self.weaviate_api_key = os.getenv("WEAVIATE_API_KEY", None)
+        self.use_weaviate_embedded = os.getenv("USE_WEAVIATE_EMBEDDED", "False") == "True"
+
+        # milvus configuration, e.g., localhost:19530.
+        self.milvus_addr = os.getenv("MILVUS_ADDR", "localhost:19530")
+        self.milvus_collection = os.getenv("MILVUS_COLLECTION", "autogpt")
+
         self.image_provider = os.getenv("IMAGE_PROVIDER")
         self.huggingface_api_token = os.getenv("HUGGINGFACE_API_TOKEN")
+        self.huggingface_audio_to_text_model = os.getenv(
+            "HUGGINGFACE_AUDIO_TO_TEXT_MODEL"
+        )
 
         # User agent headers to use when browsing web
-        # Some websites might just completely deny request with an error code if no user agent was found.
+        # Some websites might just completely deny request with an error code if
+        # no user agent was found.
         self.user_agent = os.getenv(
             "USER_AGENT",
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36"
+            " (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36",
         )
         self.redis_host = os.getenv("REDIS_HOST", "localhost")
         self.redis_port = os.getenv("REDIS_PORT", "6379")
@@ -108,15 +116,17 @@ class Config(metaclass=Singleton):
             The matching deployment id if found, otherwise an empty string.
         """
         if model == self.fast_llm_model:
-            return self.azure_model_to_deployment_id_map["fast_llm_model_deployment_id"]
+            return self.azure_model_to_deployment_id_map[
+                "fast_llm_model_deployment_id"
+            ]  # type: ignore
         elif model == self.smart_llm_model:
             return self.azure_model_to_deployment_id_map[
                 "smart_llm_model_deployment_id"
-            ]
+            ]  # type: ignore
         elif model == "text-embedding-ada-002":
             return self.azure_model_to_deployment_id_map[
                 "embedding_model_deployment_id"
-            ]
+            ]  # type: ignore
         else:
             return ""
 
@@ -124,7 +134,8 @@ class Config(metaclass=Singleton):
 
     def load_azure_config(self, config_file: str = AZURE_CONFIG_FILE) -> None:
         """
-        Loads the configuration parameters for Azure hosting from the specified file path as a yaml file.
+        Loads the configuration parameters for Azure hosting from the specified file
+          path as a yaml file.
 
         Parameters:
             config_file(str): The path to the config yaml file. DEFAULT: "../azure.yaml"
@@ -137,14 +148,10 @@ class Config(metaclass=Singleton):
                 config_params = yaml.load(file, Loader=yaml.FullLoader)
         except FileNotFoundError:
             config_params = {}
-        self.openai_api_type = os.getenv(
-            "OPENAI_API_TYPE", config_params.get("azure_api_type", "azure")
-        )
-        self.openai_api_base = os.getenv(
-            "OPENAI_AZURE_API_BASE", config_params.get("azure_api_base", "")
-        )
-        self.openai_api_version = os.getenv(
-            "OPENAI_AZURE_API_VERSION", config_params.get("azure_api_version", "")
+        self.openai_api_type = config_params.get("azure_api_type") or "azure"
+        self.openai_api_base = config_params.get("azure_api_base") or ""
+        self.openai_api_version = (
+            config_params.get("azure_api_version") or "2023-03-15-preview"
         )
         self.azure_model_to_deployment_id_map = config_params.get("azure_model_map", [])
 
@@ -152,7 +159,7 @@ class Config(metaclass=Singleton):
         """设置连续模式状态。"""
         self.continuous_mode = value
 
-    def set_continuous_limit(self, value: int):
+    def set_continuous_limit(self, value: int) -> None:
         """Set the continuous limit value."""
         self.continuous_limit = value
 
@@ -176,11 +183,11 @@ class Config(metaclass=Singleton):
         """设置smart token令牌限值。"""
         self.smart_token_limit = value
 
-    def set_browse_chunk_max_length(self, value: int):
+    def set_browse_chunk_max_length(self, value: int) -> None:
         """Set the browse_website command chunk max length value."""
         self.browse_chunk_max_length = value
 
-    def set_browse_summary_max_token(self, value: int):
+    def set_browse_summary_max_token(self, value: int) -> None:
         """Set the browse_website command summary max token value."""
         self.browse_summary_max_token = value
 
@@ -219,3 +226,15 @@ class Config(metaclass=Singleton):
     def set_debug_mode(self, value: bool):
         """设置调试模式值."""
         self.debug_mode = value
+
+
+def check_openai_api_key() -> None:
+    """Check if the OpenAI API key is set in config.py or as an environment variable."""
+    cfg = Config()
+    if not cfg.openai_api_key:
+        print(
+            Fore.RED
+            + "Please set your OpenAI API key in .env or as an environment variable."
+        )
+        print("You can get your key from https://beta.openai.com/account/api-keys")
+        exit(1)
